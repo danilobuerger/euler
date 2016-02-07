@@ -21,6 +21,15 @@ func TestSumOfNumbers(t *testing.T) {
 	}
 }
 
+func TestSumOfSquares(t *testing.T) {
+	n := 100
+	want := 338350
+
+	if got := SumOfSquares(n); got != want {
+		t.Errorf("SumOfSquares(%d) == %d, want %d", n, got, want)
+	}
+}
+
 func TestIsPalindrome(t *testing.T) {
 	n := 9009
 	want := true

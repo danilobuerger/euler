@@ -12,6 +12,11 @@ func SumOfNumbers(n int) int {
 	return n * (n + 1) / 2
 }
 
+// SumOfSquares returns the sum from 1**2 to n**2, e.g. 1**2 + 2**2 + ... + 100**2 = 5050
+func SumOfSquares(n int) int {
+	return (2*n + 1) * (n + 1) * n / 6
+}
+
 // IsPalindrome returns true if n is a palindrome, e.g. 9009
 func IsPalindrome(n int) bool {
 	return n == Reverse(n)
