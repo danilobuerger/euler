@@ -1,5 +1,7 @@
 package numbers
 
+import "math"
+
 // SumMultiples returns the sum of multiples of n up until limit
 func SumMultiples(n, limit int) int {
 	return n * Sum1ToN(limit/n)
@@ -23,4 +25,9 @@ func Reverse(n int) int {
 		n = n / 10
 	}
 	return rev
+}
+
+// GreatestPerfectPower returns the greatest exponent of base^e < limit
+func GreatestPerfectPower(base, limit int) int {
+	return int(math.Log(float64(limit)) / math.Log(float64(base)))
 }

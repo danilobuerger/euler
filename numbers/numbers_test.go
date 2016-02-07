@@ -38,3 +38,22 @@ func TestReverse(t *testing.T) {
 		t.Errorf("Reverse(%d) == %d, want %d", n, got, want)
 	}
 }
+
+func TestGreatestPerfectPower(t *testing.T) {
+	limit := 100
+	cases := []struct {
+		in, want int
+	}{
+		{2, 6},
+		{3, 4},
+		{4, 3},
+		{5, 2},
+	}
+
+	for _, c := range cases {
+		got := GreatestPerfectPower(c.in, limit)
+		if got != c.want {
+			t.Errorf("GreatestPerfectPower(%d, %d) == %d, want %d", c.in, limit, got, c.want)
+		}
+	}
+}
