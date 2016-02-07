@@ -20,3 +20,21 @@ func TestSum1ToN(t *testing.T) {
 		t.Errorf("Sum1ToN(%d) == %d, want %d", n, got, want)
 	}
 }
+
+func TestIsPalindrome(t *testing.T) {
+	n := 9009
+	want := true
+
+	if got := IsPalindrome(n); got != want {
+		t.Errorf("IsPalindrome(%d) == %t, want %t", n, got, want)
+	}
+}
+
+func TestReverse(t *testing.T) {
+	n := 12345
+	want := 54321
+
+	if got := Reverse(n); got != want {
+		t.Errorf("Reverse(%d) == %d, want %d", n, got, want)
+	}
+}

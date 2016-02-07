@@ -9,3 +9,18 @@ func SumMultiples(n, limit int) int {
 func Sum1ToN(n int) int {
 	return n * (n + 1) / 2
 }
+
+// IsPalindrome returns true if n is a palindrome, e.g. 9009
+func IsPalindrome(n int) bool {
+	return n == Reverse(n)
+}
+
+// Reverse reverses n, e.g. 12345 becomes 54321
+func Reverse(n int) int {
+	rev := 0
+	for n > 0 {
+		rev = rev*10 + n%10
+		n = n / 10
+	}
+	return rev
+}
