@@ -2,13 +2,13 @@ package numbers
 
 import "math"
 
-// SumMultiples returns the sum of multiples of n up until limit
-func SumMultiples(n, limit int) int {
-	return n * Sum1ToN(limit/n)
+// SumOfMultiples returns the sum of multiples of i up to n
+func SumOfMultiples(i, n int) int {
+	return i * SumOfNumbers(n/i)
 }
 
-// Sum1ToN returns the sum from 1 to n, e.g. 1 + 2 + ... + 100 = 5050
-func Sum1ToN(n int) int {
+// SumOfNumbers returns the sum from 1 to n, e.g. 1 + 2 + ... + 100 = 5050
+func SumOfNumbers(n int) int {
 	return n * (n + 1) / 2
 }
 
@@ -27,7 +27,7 @@ func Reverse(n int) int {
 	return rev
 }
 
-// GreatestPerfectPower returns the greatest exponent of base^e < limit
+// GreatestPerfectPower returns the greatest exponent of base**e < limit
 func GreatestPerfectPower(base, limit int) int {
 	return int(math.Log(float64(limit)) / math.Log(float64(base)))
 }
