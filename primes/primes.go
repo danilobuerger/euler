@@ -42,3 +42,61 @@ func FactorizationGenerator(n int, done chan struct{}) <-chan int {
 
 	return out
 }
+
+// Generator generates prime numbers until closed
+func Generator(done chan struct{}) <-chan int {
+	out := make(chan int)
+
+	go func() {
+		defer close(out)
+
+		select {
+		case out <- 2:
+		case <-done:
+			return
+		}
+
+		select {
+		case out <- 3:
+		case <-done:
+			return
+		}
+
+		for i := 5; true; i += 6 {
+			if IsPrime(i) {
+				select {
+				case out <- i:
+				case <-done:
+					return
+				}
+			}
+
+			if IsPrime(i + 2) {
+				select {
+				case out <- i + 2:
+				case <-done:
+					return
+				}
+			}
+		}
+	}()
+
+	return out
+}
+
+// IsPrime returns true if n is prime
+func IsPrime(n int) bool {
+	if n <= 1 {
+		return false
+	} else if n <= 3 {
+		return true
+	} else if n%2 == 0 || n%3 == 0 {
+		return false
+	}
+	for i := 5; i*i <= n; i += 6 {
+		if n%i == 0 || n%(i+2) == 0 {
+			return false
+		}
+	}
+	return true
+}
